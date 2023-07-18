@@ -17,7 +17,6 @@ export class PokemonService {
 
   // Devuelve 8 pokémon random
   getRandom(): Pokemon[] {
-
     let randomIds: number[] = this.getRandomIds();
     let pokemonList: Pokemon[] = [];
 
@@ -31,6 +30,11 @@ export class PokemonService {
   // Devuelve un pokémon buscandolo por Id
   getById(id: number): Observable<Pokemon> {
     return this.http.get<Pokemon>(this.endpoint + id);
+  }
+
+  // Devuelve un pokémon buscandolo por Name
+  getByName(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(this.endpoint + name);
   }
 
   // Genera 8 numeros aleatorios del 1 al 1010, nº de pokémon en la API

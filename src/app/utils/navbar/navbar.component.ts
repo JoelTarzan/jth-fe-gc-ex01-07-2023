@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,12 @@ import { NavigationEnd, Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   currentPage: string = '';
+  name: string = '';
 
-  constructor(private router: Router) {
-
+  constructor(
+    private router: Router,
+    private pokemonService: PokemonService
+    ) {
   }
 
   ngOnInit(): void {
@@ -19,6 +23,12 @@ export class NavbarComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.currentPage = event.url;
       }
+    });
+  }
+
+  searchByName(): void {
+    this.pokemonService.getByName(this.name.toLowerCase()).subscribe(result => {
+      this.router.navigateByUrl('details/' + result.id);
     });
   }
 }

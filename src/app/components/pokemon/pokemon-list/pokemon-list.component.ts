@@ -17,7 +17,6 @@ export class PokemonListComponent implements OnInit{
 
   ngOnInit(): void {
     this.pokemonList = this.pokemonService.getRandom();
-    console.log(this.pokemonList);
   }
 
 }
