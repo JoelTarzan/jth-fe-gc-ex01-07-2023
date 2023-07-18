@@ -1,1 +1,7 @@
-<p>pokemon-card works!</p>
+<div class="card mx-auto my-2" class="card">
+    <img src="{{pokemon.sprites.front_default}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text text-center">{{pokemon.name | uppercase}}</p>
+        <a class="btn btn-warning w-100" [routerLink]="['/details', pokemon.id]">See more</a>
+    </div>
+</div>

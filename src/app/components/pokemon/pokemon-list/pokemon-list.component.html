@@ -1,1 +1,8 @@
-<p>pokemon-list works!</p>
+<app-navbar></app-navbar>
+<div class="container d-flex flex-wrap">
+
+    <div class="mx-auto my-2" *ngFor="let pokemon of pokemonList">
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+    </div>
+
+</div>
