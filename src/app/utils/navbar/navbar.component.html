@@ -1,1 +1,35 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+
+    <div class="container-fluid d-flex justify-content-between">
+
+    <a class="navbar-brand mx-5 fw-bold" routerLink="/">Pokémon App</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mx-5" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" [ngClass]="{'active': currentPage === ''}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/pokemon" [ngClass]="{'active': currentPage === '/pokemon'}">Pokémon</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/about" [ngClass]="{'active': currentPage === '/about'}">About</a>
+            </li>
+        </ul>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        <button class="btn btn-danger mx-0 my-3 mx-xl-2 my-xl-0">Logout</button>
+    </div>
+
+    </div>
+
+</nav>
