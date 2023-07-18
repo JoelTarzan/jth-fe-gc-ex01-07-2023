@@ -1,1 +1,23 @@
-<p>pokemon-details works!</p>
+<app-navbar></app-navbar>
+<div class="container my-5">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ pokemon.sprites.front_default }}" class="card-img-top" alt="{{pokemon.name}} image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title mt-3 mb-4 fs-1">{{pokemon.name | uppercase}}</h5>
+                    <p class="card-text fs-3 mb-2">
+                        Types: 
+                        <span class="me-4" *ngFor="let types of pokemon.types">
+                            {{types.type.name}}
+                        </span>
+                    </p>
+                    <p class="card-text fs-3">Height: {{pokemon.height}} dm.</p>
+                    <p class="card-text fs-3">Weight: {{pokemon.weight}} hg.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
