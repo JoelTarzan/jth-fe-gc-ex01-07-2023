@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private authService: AuthService
     ) {
   }
 
@@ -30,5 +32,13 @@ export class NavbarComponent implements OnInit {
     this.pokemonService.getByName(this.name.toLowerCase()).subscribe(result => {
       this.router.navigateByUrl('details/' + result.id);
     });
+  }
+
+  logout() {
+    this.authService.logout()
+    .then(response => {
+      this.router.navigate(['/login']);
+    })
+    .catch(error => console.log(error));
   }
 }

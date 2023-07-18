@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PokemonListComponent } from './components/pokemon/pokemon-list/pokemon-list.component';
 import { AboutComponent } from './components/about/about.component';
 import { PokemonDetailsComponent } from './components/pokemon/pokemon-details/pokemon-details.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
   {
@@ -18,19 +19,23 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'pokemon',
-    component: PokemonListComponent
+    component: PokemonListComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'details/:id',
     component: PokemonDetailsComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'about',
     component: AboutComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
   {
     path: '',
@@ -39,7 +44,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: HomeComponent
+    component: HomeComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
   }
 ];
 
