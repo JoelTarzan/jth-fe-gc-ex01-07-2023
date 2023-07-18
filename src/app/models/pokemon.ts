@@ -5,4 +5,5 @@ export class Pokemon {
     weight: number = 0;
     types: any[] = [];
     sprites: any;
+    stats: any[] = [];
 }
